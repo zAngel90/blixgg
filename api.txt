@@ -1,0 +1,203 @@
+ist challenges
+List all challenges as well as rewards (xp, stars, cosmetics).
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v3/challenges?season=current&lang=en
+
+List items
+List all cosmetic items: skins, backpacks, emotes, pickaxes, sprays, etc.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v2/items/list?lang=en
+
+List upcoming items
+List upcoming cosmetic items: skins, backpacks, emotes, pickaxes.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v2/items/upcoming?lang=en
+
+Get item details
+Get all available details about an item. The ID can be found from the full list of items.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v2/items/get?id=CID_242_Athena_Commando_F_Bullseye&lang=en
+
+Get list of sets
+List all the sets used by cosmetics.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v2/items/sets?lang=en
+
+Get daily shop
+List all items currently in the shop
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v2/shop?lang=en
+
+List rarities
+List the rarities used by cosmetics and weapons.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v2/rarities?lang=en
+
+Search account ID
+Search an account ID using a player name
+Optional:
+
+Parameter platform will search for accounts not linked to an epic account, values: xbl or psn
+Parameter strict=false will return other results for similar names
+GET https://fortniteapi.io/v1/lookup?username=Ninja
+
+Get global player stats
+Get player stats, with a breakdown per platform used (mouse & keyboard, gamepad, touch)
+
+GET https://fortniteapi.io/v1/stats?account=4735ce9132924caf8a5b17789b40f79c
+
+Get Battle Royale/STW/Creative news
+Lists the current news in Fortnite Battle Royale or Save The World
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/news?lang=en&type=br
+
+Battle Pass rewards
+Get the list of rewards given in the Battle Pass for each season
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v2/battlepass?lang=en&season=current
+
+Achievements
+Get the list of achievements
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/achievements?lang=en
+
+Tournaments
+Get the list of tournaments
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/events/list?lang=en&region=NAE
+
+Tournament session details
+Get a tournament session details: rules, payout, results
+
+GET https://fortniteapi.io/v1/events/window?windowId=S11_CC_Contenders_EU_Event1
+
+Tournament scores (cumulative)BETA
+Get the scoring for an event (cumulative)
+
+GET https://fortniteapi.io/v1/events/cumulative?eventId=epicgames_S14_FNCS_Qualifier1_EU_PC
+
+Tournaments replay: meta data + replay chunksPREMIUM
+Get download links for replay chunks as well as basic meta data
+Session ID can be found in the /events/window endpoint.
+
+GET https://fortniteapi.io/v1/events/replay?session=fbb092f4356349209e08c06d96eb8f26
+
+Get current map (2048x2048px)
+This is the latest map available in the files
+
+GET https://media.fortniteapi.io/images/map.png
+
+Get current map with POI names (2048x2048px)
+This is the latest map available in the files with POI names, for v11.00+ maps only.
+
+GET https://media.fortniteapi.io/images/map.png?showPOI=true
+
+List previous maps
+Get the list of links to the different maps. Every new map change is now automatically archived.
+
+GET https://fortniteapi.io/v1/maps/list
+
+List previous seasons
+List all the season dates and patch versions associated.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/seasons/list?lang=en
+
+Get bundlesPREMIUM
+List recent bundles.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v2/bundles?lang=en
+
+Loot/weapons listBETA
+List all loot/weapons in the game with their basic stats.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/loot/list?lang=en
+
+Loot/weapons advanced detailsBETAPREMIUM
+Get all stats for a specific loot/weapon item.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/loot/get?id=WID_Assault_AutoHigh_Athena_SR_Ore_T03&lang=en
+
+Loot/weapons spawn chancesBETAPREMIUM
+List the spawn chances for each type for a given game mode.
+
+GET https://fortniteapi.io/v1/loot/chances?mode=Playlist_DefaultSolo
+
+List of current POIs
+List all the POIs currently in the game. (0,0) being the top left corner of the map.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v2/game/poi?lang=en
+
+List of game modes
+List all the game modes in the games files.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr, zh-CN, zh-Hant
+
+GET https://fortniteapi.io/v1/game/modes?lang=en
+
+Creative: featured islands
+List the current featured islands in creative mode
+
+GET https://fortniteapi.io/v1/creative/featured
+
+Creative: search for an island
+Get all details related to a creative island
+
+GET https://fortniteapi.io/v1/creative/island?code=1787-6243-5207
+
+Creator code lookup
+Get all available details about a creator code
+
+GET https://fortniteapi.io/v1/creator?code=ninja
+
+Loot: list of fish
+Get the list of fish (name, description, image) as well as their minimum and maximum length.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v1/loot/fish?lang=en
+
+Fortnite CrewBETA
+Get the current fortnite crew information as well as the pricing.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v2/crew?lang=en
+
+Fortnite Crew - HistoryBETA
+Get the fortnite crew information for each month.
+List of supported languages: en, ar, de, es, es-419, fr, it, ja, ko, pl, pt-BR, ru, tr
+
+GET https://fortniteapi.io/v2/crew/history?lang=en
+
+Fortnite Creative: Discovery islandsBETAPREMIUM
+Get the list of creative islands available in the discovery tab.
+
+GET https://fortniteapi.io/v3/creative/discovery
+
+Vehicles statsBETA
+Get the list of vehicles with their name, icon, stats, gears.
+
+GET https://fortniteapi.io/v2/game/vehicles
+
+Twitch dropsBETA
+List of twitch drops.
+
+GET https://fortniteapi.io/v1/twitch/drops
+
+AugmentsBETA
+List of augments in the game.
+
+GET https://fortniteapi.io/v1/game/augments
