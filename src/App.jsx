@@ -23,6 +23,14 @@ const theme = createTheme({
     }
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#000000',
+          backgroundImage: 'none'
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {
