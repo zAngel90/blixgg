@@ -28,6 +28,7 @@ const ShopPanel = ({ isOpen }) => {
     const fetchShopItems = async () => {
       if (!isOpen) return;
       
+      console.log('Fetching shop items...');
       setLoading(true);
       try {
         const response = await fetch('https://fortniteapi.io/v2/shop?lang=en', {
@@ -38,27 +39,22 @@ const ShopPanel = ({ isOpen }) => {
         const data = await response.json();
         
         if (data.result) {
-          const formattedItems = data.shop.map(item => {
+          const formattedItems = data.shop.map((item, index) => {
             const mainItem = item.granted[0] || {};
             const itemType = item.mainType || mainItem.type?.id || 'outfit';
             
             // Priorizar imágenes transparentes
             const getTransparentImage = () => {
-              // Primero intentar obtener la imagen transparente del item principal
               if (mainItem.images?.icon) return mainItem.images.icon;
               if (mainItem.images?.transparent) return mainItem.images.transparent;
-              
-              // Luego intentar obtener la imagen transparente de los assets
               if (item.displayAssets?.[0]?.transparent) return item.displayAssets[0].transparent;
-              
-              // Si no hay transparentes, usar cualquier imagen disponible
               return item.displayAssets?.[0]?.full_background || 
                      mainItem.images?.featured || 
                      item.displayAssets?.[0]?.url;
             };
 
             return {
-              id: item.mainId,
+              id: `${item.mainId}_${index}`, // Asegurar keys únicas
               name: item.displayName,
               description: item.displayDescription,
               price: item.price.regularPrice,
@@ -71,6 +67,7 @@ const ShopPanel = ({ isOpen }) => {
           .filter(item => item.image)
           .sort((a, b) => a.sortOrder - b.sortOrder);
 
+          console.log('Shop items loaded:', formattedItems.length);
           setItems(formattedItems);
         }
       } catch (error) {
@@ -80,7 +77,9 @@ const ShopPanel = ({ isOpen }) => {
       }
     };
 
-    fetchShopItems();
+    if (isOpen) {
+      fetchShopItems();
+    }
   }, [isOpen]);
 
   const getSortOrder = (type) => {
@@ -122,26 +121,29 @@ const ShopPanel = ({ isOpen }) => {
     }
   };
 
+  console.log('Rendering ShopPanel, isOpen:', isOpen);
+  if (!isOpen) return null;
+
   return (
     <Box
       sx={{
-        position: 'fixed',
-        top: '56px',
-        left: '50%',
-        transform: 'translateX(-75%)',
+        position: 'absolute',
+        top: '8px',
+        right: '50%',
+        transform: 'translateX(25%)',
         width: '90vw',
         maxWidth: '1400px',
         bgcolor: '#000000',
-        height: isOpen ? '80vh' : 0,
         overflow: 'hidden',
-        zIndex: 1000,
-        boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
+        height: isOpen ? '80vh' : 0,
         opacity: isOpen ? 1 : 0,
         visibility: isOpen ? 'visible' : 'hidden',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        borderRadius: '0 0 12px 12px',
+        borderRadius: '12px',
         border: '1px solid rgba(255,255,255,0.1)',
-        backdropFilter: 'blur(10px)'
+        backdropFilter: 'blur(10px)',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
+        zIndex: 1000
       }}
     >
       <Box 
@@ -351,4 +353,4 @@ const ShopPanel = ({ isOpen }) => {
   );
 };
 
-export default ShopPanel; 
+export default ShopPanel;
