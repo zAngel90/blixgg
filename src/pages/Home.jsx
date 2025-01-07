@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import DailyShop from '../components/DailyShop';
 
 const Home = () => {
@@ -116,6 +118,72 @@ const Home = () => {
               >
                 Learn more
               </Button>
+            </Box>
+            <Box sx={{ 
+              display: 'flex', 
+              gap: 3,
+              mt: 2,
+              alignItems: 'center'
+            }}>
+              <Box 
+                component="a"
+                href="https://discord.gg/tuservidor"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  gap: 1,
+                  color: 'rgba(255,255,255,0.7)',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    color: 'white'
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faDiscord} size="lg" />
+              </Box>
+
+              <Box 
+                component="a"
+                href="https://instagram.com/tuusuario"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  gap: 1,
+                  color: 'rgba(255,255,255,0.7)',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    color: 'white'
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faInstagram} size="lg" />
+              </Box>
+
+              <Box 
+                component="a"
+                href="https://wa.me/tunumero"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  gap: 1,
+                  color: 'rgba(255,255,255,0.7)',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    color: 'white'
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faWhatsapp} size="lg" />
+              </Box>
             </Box>
           </Box>
           <Box 

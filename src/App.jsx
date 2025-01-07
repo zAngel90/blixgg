@@ -1,61 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import Bot from './pages/Bot';
-
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-    background: {
-      default: '#000000',
-      paper: '#000000'
-    },
-    primary: {
-      main: '#ffffff'
-    }
-  },
-  typography: {
-    fontFamily: '"Inter", "system-ui", "Avenir", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontWeight: 700
-    }
-  },
-  components: {
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#000000',
-          backgroundImage: 'none'
-        }
-      }
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          fontWeight: 500
-        }
-      }
-    }
-  }
-});
+import Footer from './components/layout/Footer';
+import Routes from './Routes';
+import { Box } from '@mui/material';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
+    <Router>
+      <Box sx={{ 
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/bot" element={<Bot />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+        <Box sx={{ flex: 1, mt: '56px' }}>
+          <Routes />
+        </Box>
+        <Footer />
+      </Box>
+    </Router>
   );
 }
 
-export default App
+export default App;

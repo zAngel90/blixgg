@@ -129,8 +129,8 @@ const ShopPanel = ({ isOpen }) => {
       sx={{
         position: 'absolute',
         top: '8px',
-        right: '50%',
-        transform: 'translateX(25%)',
+        left: '50%',
+        transform: 'translateX(-50%)',
         width: '90vw',
         maxWidth: '1400px',
         bgcolor: '#000000',
@@ -145,6 +145,7 @@ const ShopPanel = ({ isOpen }) => {
         boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
         zIndex: 1000
       }}
+      onClick={(e) => e.stopPropagation()}
     >
       <Box 
         sx={{ 
@@ -179,13 +180,18 @@ const ShopPanel = ({ isOpen }) => {
               py: 2,
               borderBottom: '1px solid rgba(255,255,255,0.1)'
             }}
+            onClick={(e) => e.stopPropagation()}
           >
             <TextField
               fullWidth
               variant="outlined"
               placeholder="Search items..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                e.stopPropagation();
+                setSearchTerm(e.target.value);
+              }}
+              onClick={(e) => e.stopPropagation()}
               sx={{
                 '& .MuiOutlinedInput-root': {
                   color: 'rgba(255,255,255,0.65)',
@@ -206,11 +212,15 @@ const ShopPanel = ({ isOpen }) => {
                 ),
               }}
             />
-            <FormControl sx={{ minWidth: 120 }}>
+            <FormControl sx={{ minWidth: 120 }} onClick={(e) => e.stopPropagation()}>
               <InputLabel sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '13px' }}>Rarity</InputLabel>
               <Select
                 value={rarity}
-                onChange={(e) => setRarity(e.target.value)}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setRarity(e.target.value);
+                }}
+                onClick={(e) => e.stopPropagation()}
                 sx={{
                   color: 'rgba(255,255,255,0.65)',
                   fontSize: '13px',
@@ -222,19 +232,23 @@ const ShopPanel = ({ isOpen }) => {
                   },
                 }}
               >
-                <MenuItem value="all">All</MenuItem>
-                <MenuItem value="common">Common</MenuItem>
-                <MenuItem value="uncommon">Uncommon</MenuItem>
-                <MenuItem value="rare">Rare</MenuItem>
-                <MenuItem value="epic">Epic</MenuItem>
-                <MenuItem value="legendary">Legendary</MenuItem>
+                <MenuItem value="all" onClick={(e) => e.stopPropagation()}>All</MenuItem>
+                <MenuItem value="common" onClick={(e) => e.stopPropagation()}>Common</MenuItem>
+                <MenuItem value="uncommon" onClick={(e) => e.stopPropagation()}>Uncommon</MenuItem>
+                <MenuItem value="rare" onClick={(e) => e.stopPropagation()}>Rare</MenuItem>
+                <MenuItem value="epic" onClick={(e) => e.stopPropagation()}>Epic</MenuItem>
+                <MenuItem value="legendary" onClick={(e) => e.stopPropagation()}>Legendary</MenuItem>
               </Select>
             </FormControl>
-            <FormControl sx={{ minWidth: 120 }}>
+            <FormControl sx={{ minWidth: 120 }} onClick={(e) => e.stopPropagation()}>
               <InputLabel sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '13px' }}>Type</InputLabel>
               <Select
                 value={type}
-                onChange={(e) => setType(e.target.value)}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setType(e.target.value);
+                }}
+                onClick={(e) => e.stopPropagation()}
                 sx={{
                   color: 'rgba(255,255,255,0.65)',
                   fontSize: '13px',
@@ -246,15 +260,15 @@ const ShopPanel = ({ isOpen }) => {
                   },
                 }}
               >
-                <MenuItem value="all">All</MenuItem>
-                <MenuItem value="bundle">Bundles</MenuItem>
-                <MenuItem value="outfit">Outfits</MenuItem>
-                <MenuItem value="backpack">Back Blings</MenuItem>
-                <MenuItem value="pickaxe">Pickaxes</MenuItem>
-                <MenuItem value="glider">Gliders</MenuItem>
-                <MenuItem value="wrap">Wraps</MenuItem>
-                <MenuItem value="emote">Emotes</MenuItem>
-                <MenuItem value="music">Music</MenuItem>
+                <MenuItem value="all" onClick={(e) => e.stopPropagation()}>All</MenuItem>
+                <MenuItem value="bundle" onClick={(e) => e.stopPropagation()}>Bundles</MenuItem>
+                <MenuItem value="outfit" onClick={(e) => e.stopPropagation()}>Outfits</MenuItem>
+                <MenuItem value="backpack" onClick={(e) => e.stopPropagation()}>Back Blings</MenuItem>
+                <MenuItem value="pickaxe" onClick={(e) => e.stopPropagation()}>Pickaxes</MenuItem>
+                <MenuItem value="glider" onClick={(e) => e.stopPropagation()}>Gliders</MenuItem>
+                <MenuItem value="wrap" onClick={(e) => e.stopPropagation()}>Wraps</MenuItem>
+                <MenuItem value="emote" onClick={(e) => e.stopPropagation()}>Emotes</MenuItem>
+                <MenuItem value="music" onClick={(e) => e.stopPropagation()}>Music</MenuItem>
               </Select>
             </FormControl>
           </Box>

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Box, IconButton, Container, Button } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import GameSelector from '../GameSelector';
 import FortniteMenu from '../FortniteMenu';
 import ShopPanel from '../ShopPanel';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 const Navbar = () => {
   const [currentMenu, setCurrentMenu] = useState(null); // 'games', 'fortnite', 'shop'
   const [selectedGame, setSelectedGame] = useState(null);
+  const location = useLocation();
 
   const handleShopClick = (event) => {
     event.stopPropagation();
@@ -76,11 +81,13 @@ const Navbar = () => {
               gap: 6
             }}>
               <Box 
-                component="div" 
+                component={Link}
+                to="/"
                 sx={{ 
                   cursor: 'pointer',
                   display: 'flex',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  textDecoration: 'none'
                 }}
               >
                 <img 
@@ -103,27 +110,12 @@ const Navbar = () => {
               flex: 2
             }}>
               <Button 
-                color="inherit" 
-                sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
-                  '&:hover': { color: 'white' },
-                  fontSize: '13px',
-                  textTransform: 'none',
-                  fontWeight: 400,
-                  minWidth: 'auto',
-                  height: '56px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  px: 1
-                }}
-              >
-                Features
-              </Button>
-              <Button 
+                component={Link}
+                to="/bot"
                 color="inherit"
+                startIcon={<SmartToyIcon />}
                 sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
+                  color: location.pathname === '/bot' ? 'white' : 'rgba(255,255,255,0.65)',
                   '&:hover': { color: 'white' },
                   fontSize: '13px',
                   textTransform: 'none',
@@ -133,88 +125,17 @@ const Navbar = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  px: 1
+                  px: 2,
+                  borderBottom: location.pathname === '/bot' ? '2px solid #00ff00' : 'none'
                 }}
               >
-                Resources
-              </Button>
-              <Button 
-                color="inherit"
-                sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
-                  '&:hover': { color: 'white' },
-                  fontSize: '13px',
-                  textTransform: 'none',
-                  fontWeight: 400,
-                  minWidth: 'auto',
-                  height: '56px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  px: 1
-                }}
-              >
-                Support
-              </Button>
-              <Button 
-                color="inherit"
-                sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
-                  '&:hover': { color: 'white' },
-                  fontSize: '13px',
-                  textTransform: 'none',
-                  fontWeight: 400,
-                  minWidth: 'auto',
-                  height: '56px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  px: 1
-                }}
-              >
-                Enterprise
-              </Button>
-              <Button 
-                color="inherit"
-                sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
-                  '&:hover': { color: 'white' },
-                  fontSize: '13px',
-                  textTransform: 'none',
-                  fontWeight: 400,
-                  minWidth: 'auto',
-                  height: '56px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  px: 1
-                }}
-              >
-                Pricing
-              </Button>
-              <Button 
-                color="inherit"
-                sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
-                  '&:hover': { color: 'white' },
-                  fontSize: '13px',
-                  textTransform: 'none',
-                  fontWeight: 400,
-                  minWidth: 'auto',
-                  height: '56px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  px: 1
-                }}
-              >
-                Contact
+                Bots
               </Button>
               <Button 
                 color="inherit"
                 onClick={handleShopClick}
                 sx={{ 
-                  color: 'rgba(255,255,255,0.65)',
+                  color: currentMenu === 'shop' ? 'white' : 'rgba(255,255,255,0.65)',
                   '&:hover': { color: 'white' },
                   fontSize: '13px',
                   textTransform: 'none',
@@ -224,8 +145,9 @@ const Navbar = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  px: 1,
-                  position: 'relative'
+                  px: 2,
+                  position: 'relative',
+                  borderBottom: currentMenu === 'shop' ? '2px solid #00ff00' : 'none'
                 }}
               >
                 {currentMenu === 'fortnite' ? 'Daily Shop' : 
@@ -252,6 +174,27 @@ const Navbar = () => {
                     </Box>
                   )}
                 </Box>
+              </Button>
+              <Button 
+                component={Link}
+                to="/about"
+                color="inherit"
+                sx={{ 
+                  color: location.pathname === '/about' ? 'white' : 'rgba(255,255,255,0.65)',
+                  '&:hover': { color: 'white' },
+                  fontSize: '13px',
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  minWidth: 'auto',
+                  height: '56px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  px: 2,
+                  borderBottom: location.pathname === '/about' ? '2px solid #00ff00' : 'none'
+                }}
+              >
+                Sobre nosotros
               </Button>
             </Box>
 
@@ -307,6 +250,32 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
+      <Box 
+        sx={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 1000
+        }}
+      >
+        <IconButton
+          component="a"
+          href="https://discord.gg/tuservidor"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            backgroundColor: '#5865F2',
+            color: 'white',
+            width: '50px',
+            height: '50px',
+            '&:hover': {
+              backgroundColor: '#4752C4'
+            }
+          }}
+        >
+          <FontAwesomeIcon icon={faDiscord} size="lg" />
+        </IconButton>
+      </Box>
     </Box>
   );
 };

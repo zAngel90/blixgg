@@ -1,0 +1,70 @@
+{
+  "name": "fnbr",
+  "version": "4.1.0",
+  "description": "A library to interact with Epic Games' Fortnite HTTP and XMPP services",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "node generateExports.js && npx tsc",
+    "lint": "eslint src/**/*.ts resources/**/*.ts enums/**/*.ts",
+    "test": "jest ./tests/",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fnbrjs/fnbr.js.git"
+  },
+  "author": "This Nils",
+  "contributors": [
+    "alextusinean <alex@tusinean.ro>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fnbrjs/fnbr.js/issues"
+  },
+  "homepage": "https://fnbr.js.org",
+  "keywords": [
+    "fortnite",
+    "shop",
+    "news",
+    "stats",
+    "lobbybot",
+    "party",
+    "xmpp",
+    "promises"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "jest": "^29.5.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@discordjs/collection": "^2.0.0",
+    "@sapphire/async-queue": "^1.5.0",
+    "@stomp/stompjs": "^7.0.0",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fnbr": "^4.1.0",
+    "https-proxy-agent": "^7.0.6",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^2.7.0",
+    "stanza": "^12.18.0",
+    "tslib": "^2.5.0",
+    "ws": "^8.18.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
+}
